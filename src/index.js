@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Image from './images/10512dragon_figure.jpg'
-
+import UserCard from './UserCard';
 const welcome = 'Welcome to 30 Days Of React'
 const title = 'Getting Started React'
 const subtitle = 'JavaScript Library'
-const firstName = 'Asabeneh'
-const lastName = 'Yetayeh'
+
 const author = {
   firstName: 'Asabeneh',
   lastName: 'Yetayeh',
@@ -19,7 +18,7 @@ const Header = () => (
       <h1>{welcome}</h1>
       <h2>{title}</h2>
       <h3>{subtitle}</h3>
-      <p>{firstName}{lastName}</p>
+      <p>{author.firstName}{author.lastName}</p>
       <small>{date}</small>
     </div>
   </header>
@@ -35,12 +34,12 @@ const personAge = (
     {author.firstName} {author.lastName} is {age} years old
   </p>
 )
-const UserCard = () => (
-  <div className='user-card'>
-    <img src={Image} alt='asabeneh image' />
-    <h2>{firstName}{lastName}</h2>
-  </div>
-)
+// const UserCard = () => (
+//   <div className='user-card'>
+//     <img src={Image} alt='asabeneh image' />
+//     <h2>{author.firstName}{author.lastName}</h2>
+//   </div>
+// )
 
 // TechList Component
 
@@ -73,9 +72,10 @@ const Footer = () => (
 // The App, or the parent or the container component
 const App = () => (
   <div className='app'>
-    <Header />
+    {/* <Header />
     <Main />
-    <Footer />
+    <Footer /> */}
+<UserCard/>
   </div>
 )
 
