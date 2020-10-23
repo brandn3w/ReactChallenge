@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Image from './images/10512dragon_figure.jpg'
 import UserCard from './UserCard';
+import HexaDecimal from './HexaDecimal';
+
+
 const welcome = 'Welcome to 30 Days Of React'
 const title = 'Getting Started React'
 const subtitle = 'JavaScript Library'
@@ -76,6 +79,7 @@ const App = () => (
     <Main />
     <Footer /> */}
 <UserCard/>
+<HexaDecimal/>
   </div>
 )
 
