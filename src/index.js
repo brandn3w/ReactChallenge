@@ -1,154 +1,67 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import asabenehImage from './images/10512dragon_figure.jpg'
 
-// Fuction to show month date year
+//const numbers = [1,2,3,4,5,6,7,8.9,10,11,12,13,14,15,16,17,18]
+// const even=[]
+// const odd=[]
+// const primes=[]
 
-const showDate = (time) => {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
+// const createArrays= function (numbers) {
+//   for (var i = 0; i< numbers.length; i++) {
+//     if (numbers[i] % 2 === 0) {
+//       even.push(numbers[i])
+//       console.log(even)
+//     }
+//     else if (numbers[i] % 2 !== 0) {
+//       odd.push(numbers[i])
+//     } else {
+//       primes.push(numbers[i])
+//     }
+//   }
+// }
+// createArrays(numbers)
 
-  const month = months[time.getMonth()].slice(0, 3)
-  const year = time.getFullYear()
-  const date = time.getDate()
-  return ` ${month} ${date}, ${year}`
+
+function groupNumbers() {
+
+  var arr = [1,2,3,4,5,6,7,8,9,10];
+  var even=[]
+  var odd=[]
+
+  var evenNumbers = arr.filter(number => number % 2 === 0);
+even.push(evenNumbers)
+  console.log("Even numbers " + even);
+
+  var oddNumbers = arr.filter(number => number % 2 !== 0);
+  odd.push(oddNumbers)
+  console.log("Odd numbers " + odd);
 }
 
-// Header Component
-const Header = ({
-  data: {
-    welcome,
-    title,
-    subtitle,
-    author: { firstName, lastName },
-    date,
-  },
-}) => {
-  return (
-    <header>
-      <div className='header-wrapper'>
-        <h1>{welcome}</h1>
-        <h2>{title}</h2>
-        <h3>{subtitle}</h3>
-        <p>
-          {firstName} {lastName}
-        </p>
-        <small>{showDate(date)}</small>
-      </div>
-    </header>
-  )
-}
+groupNumbers();
 
-// TechList Component
-const TechList = ({ techs }) => {
-  const techList = techs.map((tech) => <li key={tech}>{tech}</li>)
-  return techList
-}
+// // Skill Component
+// const Skill = ({ skill: [tech, level] }) => (
+//   <li>
+//     {tech} {level}
+//   </li>
+// )
 
-// User Card Component
-const UserCard = ({ user: { firstName, lastName, image } }) => (
-  <div className='user-card'>
-    <img src={image} alt={firstName} />
-    <h2>
-      {firstName}
-      {lastName}
-    </h2>
-  </div>
-)
+// // Skills Component
+// const Skills = ({ skills }) => {
+//   const skillsList = skills.map((skill) => <Skill skill={skill} />)
+//   console.log(skillsList)
+//   return <ul>{skillsList}</ul>
+// }
 
-// A button component
-
-const Button = ({ text, onClick, style }) => (
-  <button style={style} onClick={onClick}>
-    {text}
-  </button>
-)
-
-// CSS styles in JavaScript Object
-const buttonStyles = {
-  backgroundColor: '#61dbfb',
-  padding: 10,
-  border: 'none',
-  borderRadius: 5,
-  margin: 3,
-  cursor: 'pointer',
-  fontSize: 18,
-  color: 'white',
-}
-
-// Main Component
-const Main = ({ user, techs, greetPeople, handleTime }) => (
-  <main>
-    <div className='main-wrapper'>
-      <p>Prerequisite to get started react.js:</p>
-      <ul>
-        <TechList techs={techs} />
-      </ul>
-      <UserCard user={user} />
-      <Button text='Greet People' onClick={greetPeople} style={buttonStyles} />
-      <Button text='Show Time' onClick={handleTime} style={buttonStyles} />
-    </div>
-  </main>
-)
-
-// Footer Component
-const Footer = ({ copyRight }) => (
-  <footer>
-    <div className='footer-wrapper'>
-      <p>Copyright {copyRight.getFullYear()}</p>
-    </div>
-  </footer>
-)
-
-// The App, or the parent or the container component
-// Functional Component
 const App = () => {
-  const data = {
-    welcome: 'Welcome to 30 Days Of React',
-    title: 'Getting Started React',
-    subtitle: 'JavaScript Library',
-    author: {
-      firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
-    date: new Date(), // date needs to be formatted to a human readable format
-  }
-  const date = new Date()
-  const techs = ['HTML', 'CSS', 'JavaScript']
-  // copying the author from data object to user variable using spread operator
-  const user = { ...data.author, image: asabenehImage }
-
-  const handleTime = () => {
-    alert(showDate(new Date()))
-  }
-  const greetPeople = () => {
-    alert('Welcome to 30 Days Of React Challenge, 2020')
-  }
-
   return (
-    <div className='app'>
-      <Header data={data} />
-      <Main
-        user={user}
-        techs={techs}
-        handleTime={handleTime}
-        greetPeople={greetPeople}
-      />
-      <Footer copyRight={date} />
+    <div className='container'>
+      <div>
+  
+      </div>
     </div>
   )
 }
+
 const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement)
