@@ -17,12 +17,13 @@ const colorArray= ()=> {
     for (let i=0; i>=6; i++ ){
         colors.push(hexaColor[i])
     }
-    return colors; 
-    
+    return colors;   
+      
     }
-    
 
-const HexaColor = () => <div>{hexaColor()}
+const HexaColor = () => 
+
+<div>{colorArray.map((color)=><div>{color}</div>)}
 </div>
 
 
