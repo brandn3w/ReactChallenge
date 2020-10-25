@@ -11,20 +11,27 @@ const hexaColor = () => {
   }
   return '#' + color
 }
+console.log(hexaColor())
 
-const colorArray= ()=> {  
-    let colors =  []
-    for (let i=0; i>=6; i++ ){
-        colors.push(hexaColor[i])
-    }
-    return colors;   
-      
-    }
+const colorArray = () => {
+  let colors = []
+  for (let i = 0; i <= 6; i++) {
+    colors.push(hexaColor())
+  }
+  return colors;
+}
+console.log(colorArray())
 
-const HexaColor = () => 
+const HexaColor = () =>
 
-<div>{colorArray.map((color)=><div>{color}</div>)}
-</div>
+  <div>
+    <h2>{colorArray().map((color)=><div 
+    key={color}
+  style={{backgroundColor: `${color}`}}>
+    {color}
+    </div>)}
+    </h2>
+  </div>
 
 
 const rootElement = document.getElementById('root')
