@@ -22,27 +22,57 @@ import ReactDOM from 'react-dom'
 // createArrays(numbers)
 
 
-function groupNumbers() {
+// function groupNumbers() {
+//   
+ 
+//   var even=[]
+//   var odd=[]
+// var prime=[]
+//   var evenNumbers = arr.filter(number => number % 2 === 0);
+// even.push(evenNumbers)
+//   console.log(even);
 
-  var arr = [1,2,3,4,5,6,7,8,9,10];
-  var even=[]
-  var odd=[]
+//   var oddNumbers = arr.filter(number => number % 2 !== 0);
+//   odd.push(oddNumbers)
+//   console.log(odd);
+//   var primeNumbers = arr.filter(number => number % 2 !==0);
+//   prime.push(primeNumbers)
+//   console.log(primeNumbers)
+// }
 
-  var evenNumbers = arr.filter(number => number % 2 === 0);
-even.push(evenNumbers)
-  console.log("Even numbers " + even);
+// groupNumbers();
 
-  var oddNumbers = arr.filter(number => number % 2 !== 0);
-  odd.push(oddNumbers)
-  console.log("Odd numbers " + odd);
-}
 
-groupNumbers();
+
+    /**
+     * An integer is prime if it is not divisible by any prime less than or equal to its square root
+     **/
+    var primenumArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    primenumArray = primenumArray.filter((number) => {
+    for (var i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) return false;
+    }
+    return true;
+    });
+
+console.log(primenumArray)
+// const Grid = ()=>(
+  
+//     <div className='grid'>
+//       {arr.map(number=><span key={number}
+//       style={
+//      number% 2 ===0 ? {backgroundColor:'green'} :
+//   (number% 2 !==0 ? {backgroundColor: 'yellow'} : {backgroundColor:'red'})
+//      }>{number}</span>)}
+//   </div>
+// )
 
 // // Skill Component
 // const Skill = ({ skill: [tech, level] }) => (
 //   <li>
 //     {tech} {level}
+
+
 //   </li>
 // )
 
@@ -56,12 +86,10 @@ groupNumbers();
 const App = () => {
   return (
     <div className='container'>
-      <div>
-  
-      </div>
+   
     </div>
   )
-}
+  }
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement)
