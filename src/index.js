@@ -1,51 +1,69 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-class Main extends React.Component {
+const Button = ({ text, onClick, style }) => (
+  <button style={style}
+
+    onClick={onClick}>
+    {text}
+  </button>
+
+)
+
+
+class Header extends React.Component {
+
   render() {
     const {
-      colorChange
-    } = this.props
+      welcome } = this.props.data
+
     return (
-      <main>
-        <h1>welcome</h1>
-        <button onClick={() => colorChange()}
-        >
-          Change color
-        </button>
-      </main>
+      <header>
+        <div className='header-wrapper'>
+          <h1>{welcome}</h1>
+          <p>Select a country for your next holiday</p>
+        </div>
+      </header>
     )
   }
 }
 
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { backgroundColor: 'blue'};
-  }
-  colorChange = () => {
-
-    let bgcolor = this.state.backgroundColor === 'blue' ? {backgroundColor : 'red'} : {backgroundColor : 'blue'}
-    this.setState(bgcolor);
-    
-
+  state = { loggedIn: false }
+  handleLogin=()=>{
+    this.setState({
+      loggedIn : !this.state.loggedIn,
+    })
   }
   render() {
 
-    const styleQuestion = {
-      backgroundColor: this.state.backgroundColor,
-    };
+    const data = {
+      welcome: 'Welcome',
+      text:'login'
+    }
+
+    let status
+    let text
+    if (this.state.isLoggedIn) {
+      status = <h3>Welcome to 30 days of React</h3>
+      text='Logout'
+    } else {
+      status = <h3>Please log in </h3>
+      text='Login'
+    }
+
     return (
+      <div className='app'>
 
-
-    <div className='app' style={styleQuestion}>
-        
-        <Main
-
-          colorChange={this.colorChange}
-
+        <Header data={data}
 
         />
+        {status}
+        <Button 
+        style={{backgroundColor:'yellow'}}
+        text={text}
+        onClick={this.handleLogin} />
 
       </div>
     )

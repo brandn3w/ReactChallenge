@@ -1,33 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-class Main extends React.Component{
-    
-    render(){
-        const colorChange=this.props
-        return(
-            <main>
-            <h1>Welcome</h1>
-            <button
-            onClick = {colorChange}> change color </button>
-            </main>
-        )
-    }
-}
+const Button =({text, onClick, style})=>(
 
+    <button
+    style= {style}
+    onClick={onClick}>
+        {text}
+        </button>
+)
 class App extends React.Component{
-    constructor(props){
-    super(props)
-    this.state = { backgroundColor: 'blue' };
-    }
-    colorChange = ()=>{
-        let bgcolor=this.state.backgroundColor==='blue'? { backgroundColor: 'red' } : { backgroundColor: 'blue' }
-        this.setState(bgcolor)
+    
+   state = { loggedIn: false };
+
+  handleLogin = ()=>{
+       this.setState({
+           loggedIn: !this.state.loggedIn
+       })
     }
     render(){
         
-    const styleQuestion = {
-        backgroundColor: this.state.backgroundColor,
+    const 
       };
         return(
             <div className='app' style={styleQuestion}>
