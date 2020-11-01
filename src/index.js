@@ -10,7 +10,17 @@ const Button = ({ text, onClick, style }) => (
 
 )
 
+const Login = () => (
+  <div>
+    <h3>Please log in</h3>
 
+  </div>
+)
+const Welcome = (props) => (
+  <div>
+    <h3>Welcome</h3>
+  </div>
+)
 class Header extends React.Component {
 
   render() {
@@ -31,27 +41,19 @@ class Header extends React.Component {
 
 class App extends React.Component {
   state = { loggedIn: false }
-  handleLogin=()=>{
+  handleLogin = () => {
     this.setState({
-      loggedIn : !this.state.loggedIn,
+      isLoggedIn: !this.stateLoggedIn
     })
   }
   render() {
 
     const data = {
       welcome: 'Welcome',
-      text:'login'
+      text: 'login'
     }
 
-    let status
-    let text
-    if (this.state.isLoggedIn) {
-      status = <h3>Welcome to 30 days of React</h3>
-      text='Logout'
-    } else {
-      status = <h3>Please log in </h3>
-      text='Login'
-    }
+    const status = this.state.loggedIn ? <Welcome /> : <Login />
 
     return (
       <div className='app'>
@@ -60,10 +62,10 @@ class App extends React.Component {
 
         />
         {status}
-        <Button 
-        style={{backgroundColor:'yellow'}}
-        text={text}
-        onClick={this.handleLogin} />
+        <Button
+          style={{ backgroundColor: 'yellow' }}
+          text={text}
+          onClick={this.handleLogin} />
 
       </div>
     )
