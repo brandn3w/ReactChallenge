@@ -151,13 +151,40 @@ class App extends React.Component {
     loggedIn: false,
     techs: ['HTML', 'CSS', 'JS'],
     message: 'Click show time or Greet people to change me',
+    season: 'spring',
+    backgroundColor: 'blue'
   }
   handleLogin = () => {
     this.setState({
       loggedIn: !this.state.loggedIn,
     })
   }
-  showDate = (time) => {
+showDate=(time)=>{
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+    const month = months[time.getMonth()].slice(0, 3)
+    const year = time.getFullYear()
+    const date = time.getDate()
+    return `${month} ${date}, ${year}`
+  }
+  handleTime = () => {
+    let message = this.showDate(new Date())
+    this.setState({ message })
+  }
+
+  handleSeason=(time)=>{
     const months = [
       'January',
       'February',
@@ -172,16 +199,19 @@ class App extends React.Component {
       'November',
       'December',
     ]
+    const month = [time.getMonth()];
 
-    const month = months[time.getMonth()].slice(0, 3)
-    const year = time.getFullYear()
-    const date = time.getDate()
-    return `${month} ${date}, ${year}`
-  }
-  handleTime = () => {
-    let message = this.showDate(new Date())
-    this.setState({ message })
-  }
+    if (month === 'January' || 'February' || 'December'){
+this.setState('winter') 
+    } else if 
+    (month === 'March' || "April" || 'May' ){
+      this.setState('spring')
+    } else {
+      this.setState('summer') 
+    }
+    }
+
+  
   greetPeople = () => {
     let message = 'Welcome to 30 Days Of React Challenge, 2020'
     this.setState({ message })
@@ -198,13 +228,15 @@ class App extends React.Component {
       },
       date: 'Oct 9, 2020',
     }
-
+if (this.state.season('summer')){
+  this.setState.backgroundColor('red')
+}
     return (
       <div className='app'>
         <Header data={data} />
 
         <Main
-          techs={techs}
+          techs={this.state.techs}
           handleTime={this.handleTime}
           greetPeople={this.greetPeople}
           loggedIn={this.state.loggedIn}
@@ -216,7 +248,7 @@ class App extends React.Component {
       </div>
     )
   }
-}
 
+}
 const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement)
