@@ -147,18 +147,22 @@ class Footer extends React.Component {
 }
 
 class App extends React.Component {
-  state = {
+  constructor(){
+    super();
+  this.state = {
     loggedIn: false,
     techs: ['HTML', 'CSS', 'JS'],
     message: 'Click show time or Greet people to change me',
     season: 'spring',
     backgroundColor: 'blue'
   }
+} 
   handleLogin = () => {
     this.setState({
       loggedIn: !this.state.loggedIn,
     })
   }
+    
 showDate=(time)=>{
   const months = [
     'January',
@@ -201,13 +205,13 @@ showDate=(time)=>{
     ]
     const month = [time.getMonth()];
 
-    if (month === 'January' || 'February' || 'December'){
-this.setState('winter') 
+    if (month === 'January' || month === 'February' || month === 'November'){
+this.setState({backgroundColor: 'yellow'}) 
     } else if 
     (month === 'March' || "April" || 'May' ){
-      this.setState('spring')
+      this.setState({backgroundColor: 'yellow'})
     } else {
-      this.setState('summer') 
+      this.setState({backgroundColor: 'red'}) 
     }
     }
 
@@ -228,11 +232,11 @@ this.setState('winter')
       },
       date: 'Oct 9, 2020',
     }
-if (this.state.season('summer')){
-  this.setState.backgroundColor('red')
-}
+   
+
+
     return (
-      <div className='app'>
+      <div className='app' style={{backgroundColor: this.state.backgroundColor}}>
         <Header data={data} />
 
         <Main
@@ -242,13 +246,14 @@ if (this.state.season('summer')){
           loggedIn={this.state.loggedIn}
           handleLogin={this.handleLogin}
           message={this.state.message}
+    
         />
 
         <Footer date={new Date()} />
       </div>
     )
   }
+  }
 
-}
 const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement)
