@@ -66,6 +66,7 @@ class TechList extends React.Component {
 // Main Component
 // Class Component
 class Main extends React.Component {
+
   render() {
     const {
       techs,
@@ -74,8 +75,10 @@ class Main extends React.Component {
       loggedIn,
       handleLogin,
       message,
+
     } = this.props
-    console.log(message)
+    console.log(message) 
+
 
     const status = loggedIn ? <Welcome /> : <Login />
     return (
@@ -132,9 +135,7 @@ const buttonStyles = {
 // Footer Component
 // Class component
 class Footer extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+
   render() {
     return (
       <footer>
@@ -147,48 +148,26 @@ class Footer extends React.Component {
 }
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
-  this.state = {
-    loggedIn: false,
-    techs: ['HTML', 'CSS', 'JS'],
-    message: 'Click show time or Greet people to change me',
-    season: 'spring',
-    backgroundColor: 'blue'
+    this.state = {
+      loggedIn: false,
+      techs: ['HTML', 'CSS', 'JS'],
+      message: 'Click show time or Greet people to change me',
+      backgroundColor: 'blue'
+    }
   }
-} 
+      
+  componentDidMount() {
+    this.handleSeason(new Date())
+  }
   handleLogin = () => {
     this.setState({
       loggedIn: !this.state.loggedIn,
     })
   }
-    
-showDate=(time)=>{
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
-    const month = months[time.getMonth()].slice(0, 3)
-    const year = time.getFullYear()
-    const date = time.getDate()
-    return `${month} ${date}, ${year}`
-  }
-  handleTime = () => {
-    let message = this.showDate(new Date())
-    this.setState({ message })
-  }
 
-  handleSeason=(time)=>{
+  showDate = (time) => {
     const months = [
       'January',
       'February',
@@ -203,19 +182,47 @@ showDate=(time)=>{
       'November',
       'December',
     ]
-    const month = [time.getMonth()];
+    const month = months[time.getMonth()].slice(0, 3)
+    const year = time.getFullYear()
+    const date = time.getDate()
+    return `${month} ${date}, ${year}`
+  }
+  handleTime = () => {
+    let message = this.showDate(new Date())
+    this.setState({ message })
+  }
 
-    if (month === 'January' || month === 'February' || month === 'November'){
-this.setState({backgroundColor: 'yellow'}) 
-    } else if 
-    (month === 'March' || "April" || 'May' ){
-      this.setState({backgroundColor: 'yellow'})
-    } else {
-      this.setState({backgroundColor: 'red'}) 
-    }
-    }
+  handleSeason = (time) => {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]
+    const month = months[time.getMonth()];
 
-  
+    if (month === 'January' || month === 'February' || month === 'December') {
+      this.setState({backgroundColor: 'white'});
+    } else if
+      (month === 'March' || month === "April" || month === 'May') {
+      this.setState({ backgroundColor: 'yellow' });
+    } else if
+    (month==='June' || month ==='July' ||month ==='August'){
+      this.setState({ backgroundColor: 'green' });
+     } else {
+      this.setState({ backgroundColor: 'red' });
+    }
+  }
+
+
   greetPeople = () => {
     let message = 'Welcome to 30 Days Of React Challenge, 2020'
     this.setState({ message })
@@ -232,11 +239,8 @@ this.setState({backgroundColor: 'yellow'})
       },
       date: 'Oct 9, 2020',
     }
-   
-
-
     return (
-      <div className='app' style={{backgroundColor: this.state.backgroundColor}}>
+      <div className='app' style={{backgroundColor: this.state.backgroundColor }}>
         <Header data={data} />
 
         <Main
@@ -246,14 +250,14 @@ this.setState({backgroundColor: 'yellow'})
           loggedIn={this.state.loggedIn}
           handleLogin={this.handleLogin}
           message={this.state.message}
-    
+         
         />
 
         <Footer date={new Date()} />
       </div>
     )
   }
-  }
+}
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement)
