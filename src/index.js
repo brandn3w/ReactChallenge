@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import ColorfulNumbers from './excerciseNumbers';
 
 //const numbers = [1,2,3,4,5,6,7,8.9,10,11,12,13,14,15,16,17,18]
 // const even=[]
@@ -47,15 +48,19 @@ import ReactDOM from 'react-dom'
     /**
      * An integer is prime if it is not divisible by any prime less than or equal to its square root
      **/
-    var primenumArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    primenumArray = primenumArray.filter((number) => {
+    var numArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+ numArray = numArray.filter((number) => {
+
     for (var i = 2; i <= Math.sqrt(number); i++) {
     if (number % i === 0) return false;
     }
-    return true;
+return false
     });
+   
+console.log(numArray)
 
-console.log(primenumArray)
+
+
 // const Grid = ()=>(
   
 //     <div className='grid'>
@@ -67,26 +72,34 @@ console.log(primenumArray)
 //   </div>
 // )
 
-// // Skill Component
-// const Skill = ({ skill: [tech, level] }) => (
-//   <li>
-//     {tech} {level}
+// Skill Component
+const Skill = ({ skill: [tech, level] }) => (
+  <li>
+    {tech} {level}
 
 
-//   </li>
-// )
+  </li>
+)
 
-// // Skills Component
-// const Skills = ({ skills }) => {
-//   const skillsList = skills.map((skill) => <Skill skill={skill} />)
-//   console.log(skillsList)
-//   return <ul>{skillsList}</ul>
-// }
+const skills = [
+  ['HTML', 10],
+  ['CSS', 7],
+  ['JavaScript', 9],
+  ['React', 8],
+]
+// Skills Component
+const Skills = ({ skills }) => {
+  const skillsList = skills.map((skill) => <Skill skill={skill} />)
+  console.log(skillsList)
+  return <ul>{skillsList}</ul>
+}
 
 const App = () => {
+
   return (
     <div className='container'>
-   
+   <Skills skills={skills}/>
+   <ColorfulNumbers />
     </div>
   )
   }
