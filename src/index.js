@@ -99,7 +99,7 @@ const App = () => {
   return (
     <div className='container'>
    <Skills skills={skills}/>
-   <ColorfulNumbers />
+   <ColorfulNumbers/>
     </div>
   )
   }

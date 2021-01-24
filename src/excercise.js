@@ -1,3 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 const hexaColor = () => {
     let str = '0123456789abcdef'
     let color = ''
@@ -16,18 +19,18 @@ const hexaColor = () => {
     }
     return colors;
   }
-  console.log(colorArray())
+
   
   const HexaColor = () =>
-  
-    <div>
-      <h2>{colorArray().map((color)=><div 
-      key={color}
-    style={{backgroundColor: `${color}`}}>
-      {color}
-      </div>)}
-      </h2>
-    </div>
+
+  <div>
+    <h2>{colorArray().map((color)=><div 
+    key={color}
+  style={{backgroundColor: `${color}`}}>
+    {color}
+    </div>)}
+    </h2>
+  </div>
   
   
   const rootElement = document.getElementById('root')
