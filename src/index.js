@@ -13,7 +13,7 @@ class App extends React.Component {
     let dogUrl =     'https://static.onecms.io/wp-content/uploads/sites/12/2015/04/dogs-pembroke-welsh-corgi-400x400.jpg'
     let catUrl =  'https://www.smithsstationah.com/imagebank/eVetSites/Feline/01.jpg'
     let image = this.state.image === catUrl ? dogUrl : catUrl
-    this.setStage({image})
+    this.setState({image})
   }
   render() {
     return (
@@ -21,7 +21,7 @@ class App extends React.Component {
                <div className='animal'>
           <img src={this.state.image} alt='animal' />
           </div>
-          <button onClick={this.state.changeAnimal}>change</button>
+          <button onClick={this.changeAnimal}>change</button>
       </div>
   )
   }
