@@ -26,10 +26,10 @@ class App extends React.Component {
   colorChange = () => {
 
     let bgcolor = this.state.backgroundColor === 'blue' ? {backgroundColor : 'red'} : {backgroundColor : 'blue'}
-    this.setState(bgcolor);
-    
+    this.setState(bgcolor);  
 
   }
+
   render() {
 
     const styleQuestion = {
@@ -39,7 +39,7 @@ class App extends React.Component {
 
 
     <div className='app' style={styleQuestion}>
-        
+ 
         <Main
 
           colorChange={this.colorChange}
