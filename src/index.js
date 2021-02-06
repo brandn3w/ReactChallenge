@@ -1,53 +1,59 @@
-// index.js
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom'
 
-
-// CSS styles in JavaScript Object
 const buttonStyles = {
   backgroundColor: '#61dbfb',
-  padding: 10,
   border: 'none',
   borderRadius: 5,
-  margin: 3,
+  color: 'white',
   cursor: 'pointer',
   fontSize: 18,
-  color: 'white',
-}
-class App extends React.Component {
-constructor(props){
-  super(props);
-  this.state = { image: 'https://www.countryflags.io/US/shiny/64.png'}
-  this.makeTimer()
+  margin: 30,
+  padding: 10,
+};
+
+function randomProperty(obj) {
+  const keys = Object.keys(obj);
+  return obj[keys[(keys.length * Math.random()) << 0]];
 }
 
-  makeTimer(){
-    setInterval(() => {
-      let countries = {
-        USA: 'https://www.countryflags.io/US/shiny/64.png',
-        Australia: 'https://www.countryflags.io/AU/shiny/64.png' ,
-        Puerto: 'https://www.countryflags.io/PR/shiny/64.png' 
-      }
-      let currentCountry = Object.entries(countries).map(([key, value]) => <div>({key, value })</div>)
-      this.setState({ currentCountry })
-    }, 1000)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentCountry: null,
+      image: 'https://www.countryflags.io/US/shiny/64.png',
+    };
+    this.makeTimer();
   }
+
+  makeTimer() {
+    let countries = {
+      USA: 'https://www.countryflags.io/US/shiny/64.png',
+      Australia: 'https://www.countryflags.io/AU/shiny/64.png',
+      'Puerto Rico': 'https://www.countryflags.io/PR/shiny/64.png',
+    };
+    setInterval(() => {
+      let currentCountry = randomProperty(countries);
+      this.setState({ currentCountry });
+    }, 1000);
+  }
+
+  stopInterval = () => {
+    clearInterval(this.interval);
+  };
 
   render() {
-
     return (
-      <div className='app'>
-        <h1>where you're going on vacation?</h1>
-       <img src = {this.state.currentCountry} alt='country'/>
-        <button
-          style={buttonStyles}
-        >
-          Click me 
- </button>
-
+      <div className="app">
+        <h1>where are you going on vacation?</h1>
+        <img alt="" src={this.state.currentCountry} />
+        <button style={buttonStyles} onClick={this.stopInterval}>
+          choose country
+        </button>
       </div>
-    )
+    );
   }
 }
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+
+ReactDOM.render(<App />, document.getElementById('root'));
